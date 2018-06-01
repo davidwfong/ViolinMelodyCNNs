@@ -2,10 +2,18 @@
 import pandas as pd
 import numpy as np
 import preprocessing
+from midiutil import MIDIFile
 #-------------------------------------------------------------------------------------------------------
 #FUNCTIONS
 
 def createGT(yPred, frameduration, audiopath, audiofilename, noteMin):
+    track    = 0
+    channel  = 0
+    time     = 0    
+    tempo    = 60   
+    MyMIDI = MIDIFile(1) 
+    MyMIDI.addTempo(track, time, tempo)
+    
     lengthAudioFrames = len(yPred)
     times = np.arange(0.00, lengthAudioFrames, frameduration)
     times = ["%.2f" % (round(t, 2)) for t in times]
@@ -30,6 +38,10 @@ def createGT(yPred, frameduration, audiopath, audiofilename, noteMin):
                     notesList.append(note)
                 elif(note == notesPred[index-1] and note != notesPred[index+1]):
                     endTimesList.append(times[index])
+                    MIDIpitch = preprocessing.getMIDIfromNote(notesList[-1])
+                    MIDItime = float(startTimesList[-1])
+                    MIDIduration = float(endTimesList[-1]) - MIDItime + 1
+                    MyMIDI.addNote(track, channel, MIDIpitch, MIDItime, MIDIduration, volume=100)
         
     startTimes = pd.DataFrame(startTimesList)
     endTimes = pd.DataFrame(endTimesList)
@@ -38,7 +50,9 @@ def createGT(yPred, frameduration, audiopath, audiofilename, noteMin):
     groundTruthClean.columns = ["Start Time (s)", "End Time (s)", "Note"]
     fileIsol = preprocessing.extractFileName(audiofilename)
     groundTruthClean.to_csv(audiopath+'/'+fileIsol+'.csv', sep=',')
-    print("Created groundtruth under filename in project filepath")
+    with open(audiopath+'/'+fileIsol+".mid", "wb") as outputFile:
+        MyMIDI.writeFile(outputFile)
+    print("Created groundtruth .csv and MIDI under filename in project filepath")
 
 
 def predictOutputSingle(model, X):
@@ -51,3 +65,24 @@ def predictOutputMT(model, X):
     probabilities = model.predict([X, X])[0]
     predictions = probabilities.argmax(axis=-1)
     return predictions
+"""
+#TESTING GROUND
+degrees  = [60, 62, 64, 65, 67, 69, 71, 72]  # MIDI note number
+duration = 1    # In beats
+
+track    = 0
+channel  = 0
+time     = 0    # beginning of track
+tempo    = 60   # In BPM
+volume   = 100  # 0-127, as per the MIDI standard
+
+MyMIDI = MIDIFile(1)  # One track, defaults to format 1 (tempo track is created
+                      # automatically)
+MyMIDI.addTempo(track, time, tempo)
+
+for i, pitch in enumerate(degrees):
+    MyMIDI.addNote(track, channel, pitch, time + i, duration, volume)
+
+with open(audiofilename+".mid", "wb") as outputFile:
+    MyMIDI.writeFile(outputFile)
+"""

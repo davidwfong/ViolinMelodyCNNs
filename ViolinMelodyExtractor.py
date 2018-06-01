@@ -47,7 +47,7 @@ else:
     print("Not a valid model filename")
     quit()
     
-#Step 8: Create the Ground Truth .csv file for predictions within path directory
+#Step 8: Create the .csv and MIDI file for violin melody prediction within path directory
 predicting.createGT(predViolinMelodySmoothed, hopSize_Sec, path, audiofilename, noteMin)    
 
 

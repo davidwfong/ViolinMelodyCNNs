@@ -17,10 +17,13 @@ predicting.py - functions for predicting melody using CNNs
 
 evaluation.py - functions for evaluating melody extraction systems
 
-ViolinMelodyExtractor.py - final product creating .csv annotation from .wav audio file
+ViolinMelodyExtractor.py - final product creating estimated violin melody transcription from .wav audio file
 
 predict_on_audio.py and weights folder containing melody2.h5 are borrowed from 
 https://github.com/rabitt/ismir2017-deepsalience and used for evaluating the melody extractor
+
+The estimated violin melody from a Brahms Sonata excert in file ViolinSonataDavid.wav is found in:
+ViolinRecitalDavid.csv, ViolinRecitalDavid.mid
 #---------------------------------------------------------------------------------------------------
 
 VIOLIN MELODY EXTRACTION SINGLE CNN MODEL SUMMARY:
