@@ -65,24 +65,5 @@ def predictOutputMT(model, X):
     probabilities = model.predict([X, X])[0]
     predictions = probabilities.argmax(axis=-1)
     return predictions
-"""
-#TESTING GROUND
-degrees  = [60, 62, 64, 65, 67, 69, 71, 72]  # MIDI note number
-duration = 1    # In beats
 
-track    = 0
-channel  = 0
-time     = 0    # beginning of track
-tempo    = 60   # In BPM
-volume   = 100  # 0-127, as per the MIDI standard
 
-MyMIDI = MIDIFile(1)  # One track, defaults to format 1 (tempo track is created
-                      # automatically)
-MyMIDI.addTempo(track, time, tempo)
-
-for i, pitch in enumerate(degrees):
-    MyMIDI.addNote(track, channel, pitch, time + i, duration, volume)
-
-with open(audiofilename+".mid", "wb") as outputFile:
-    MyMIDI.writeFile(outputFile)
-"""
