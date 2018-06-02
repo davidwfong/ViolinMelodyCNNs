@@ -39,10 +39,10 @@ Package Dependencies (Python 2.7):
 - scikit-learn 0.19.1
 
 Models: 
-MonoMECNN_1.h5: Single CNN for Violin Melody Extraction from Monophonic Music
-PolyMECNN_1.h5: Single CNN for Violin Melody Extraction from Polyphonic Music
-MTMECNN_1.h5: Multi-Task CNN for Violin Melody Extraction
-MTMECNN_2.h5: Multi-Task CNN for Violin Melody Extraction
-MTMECNN_3.h5: Multi-Task CNN for Violin Melody Extraction (best performing with overall accuracy of 74.94% on Su Dataset VS01 & VS04) 
-MTMECNN_4.h5: Multi-Task CNN for Violin Melody Extraction
-MTMECNN_5.h5: Multi-Task CNN for Violin Melody Extraction
+- MonoMECNN_1.h5: Single CNN for Violin Melody Extraction from Monophonic Music
+- PolyMECNN_1.h5: Single CNN for Violin Melody Extraction from Polyphonic Music
+- MTMECNN_1.h5: Multi-Task CNN for Violin Melody Extraction
+- MTMECNN_2.h5: Multi-Task CNN for Violin Melody Extraction
+- MTMECNN_3.h5: Multi-Task CNN for Violin Melody Extraction (best performing with overall accuracy of 74.94% on Su Dataset VS01 & VS04) 
+- MTMECNN_4.h5: Multi-Task CNN for Violin Melody Extraction
+- MTMECNN_5.h5: Multi-Task CNN for Violin Melody Extraction
