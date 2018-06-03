@@ -31,6 +31,7 @@ Package Dependencies (Python 2.7):
 - keras 2.1.5 
 - librosa 0.6.0
 - matplotlib 2.1.2
+- mir_eval 0.4
 - MIDIUtil 1.2.1
 - numpy 1.14.0
 - pandas 0.22.0
