@@ -5,10 +5,10 @@ import postprocessing
 import predicting
 
 #Step 1: specify path of violin melody extractor
-path = input("Insert path of violin melody extractor\n")
+path = raw_input("Insert path of violin melody extractor\n")
 
 #Step 2: specify audio file name
-audiofilename = input("Insert name of audio file including .wav extension\n")
+audiofilename = raw_input("Insert name of audio file including .wav extension\n")
 audiofile = path + '/' + audiofilename
 
 #Step 3: Hardcode Input Feature Representation parameters
@@ -29,7 +29,7 @@ XHCQT = preprocessing.extractInputFeatures(audiofile,
 f0TrainingLabels = preprocessing.loadLabelArray(path, 'f0TrainingLabels'+'.npy')
 
 #Step 6: specify path and name of model file which must be placed within path directory
-modelfilename = input("Insert name of model file including .h5 extension\n")
+modelfilename = raw_input("Insert name of model file including .h5 extension\n")
 
 #Step 7: Predict violin trajectory using specified VME CNN model
 if(modelfilename=='PolyMECNN_1.h5'):
