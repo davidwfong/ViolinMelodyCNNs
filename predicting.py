@@ -33,14 +33,18 @@ def createGT(yPred, frameduration, audiopath, audiofilename, noteMin):
                     startTimesList.append(times[index])
                     notesList.append(note)
                     endTimesList.append(times[index])
+                    MIDIpitch = preprocessing.getMIDIfromNote(note)
+                    MIDItime = float(times[index])
+                    MIDIduration = 0.01
+                    MyMIDI.addNote(track, channel, MIDIpitch, MIDItime, MIDIduration, volume=100)
                 elif(note != notesPred[index-1] and note == notesPred[index+1]):
                     startTimesList.append(times[index])
                     notesList.append(note)
                 elif(note == notesPred[index-1] and note != notesPred[index+1]):
                     endTimesList.append(times[index])
-                    MIDIpitch = preprocessing.getMIDIfromNote(notesList[-1])
+                    MIDIpitch = preprocessing.getMIDIfromNote(note)
                     MIDItime = float(startTimesList[-1])
-                    MIDIduration = float(endTimesList[-1]) - MIDItime + 1
+                    MIDIduration = float(times[index]) - MIDItime + 0.01
                     MyMIDI.addNote(track, channel, MIDIpitch, MIDItime, MIDIduration, volume=100)
         
     startTimes = pd.DataFrame(startTimesList)
