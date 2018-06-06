@@ -1,7 +1,7 @@
 # DEEP CNNs FOR VIOLIN MELODY EXTRACTION FROM POLYPHONIC MUSIC SIGNALS 
 ##### David W. Fong
 
-*Final Year Project submitted in partial fulfillment of requirements for the degree
+*Final Year Project submitted in partial fulfillment of the requirements for the degree
 BEng in Electrical and Electronic Engineering at Imperial College London* 
 
 ### Scripts:
