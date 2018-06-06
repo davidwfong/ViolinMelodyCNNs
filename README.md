@@ -31,13 +31,13 @@ https://github.com/rabitt/ismir2017-deepsalience and used for evaluating the mel
 - scikit-learn 0.19.1
 
 ### CNN Models: 
-- MonoMECNN_1.h5: Single CNN for Violin Melody Extraction from Monophonic Music
-- PolyMECNN_1.h5: Single CNN for Violin Melody Extraction from Polyphonic Music
-- MTMECNN_1.h5: Multi-Task CNN for Violin Melody Extraction
-- MTMECNN_2.h5: Multi-Task CNN for Violin Melody Extraction
-- MTMECNN_3.h5: Multi-Task CNN for Violin Melody Extraction (Recommended - Best Performing) 
-- MTMECNN_4.h5: Multi-Task CNN for Violin Melody Extraction
-- MTMECNN_5.h5: Multi-Task CNN for Violin Melody Extraction
+- MonoMECNN_1.h5: Single CNN for Violin Melody Extraction from Monophonic Music Signals
+- PolyMECNN_1.h5: Single CNN for Violin Melody Extraction from Polyphonic Music Signals
+- MTMECNN_1.h5: Multi-Task CNN 1 for Violin Melody Extraction from Polyphonic Music Signals
+- MTMECNN_2.h5: Multi-Task CNN 2 for Violin Melody Extraction from Polyphonic Music Signals
+- MTMECNN_3.h5: Multi-Task CNN 3 for Violin Melody Extraction from Polyphonic Music Signals (Recommended) 
+- MTMECNN_4.h5: Multi-Task CNN 4 for Violin Melody Extraction from Polyphonic Music Signals
+- MTMECNN_5.h5: Multi-Task CNN 5 for Violin Melody Extraction from Polyphonic Music Signals
 
 ### Demo Files:
 - ViolinSonataDavid.wav: Audio Excerpt from Brahms Sonata No.2 in A Major, Movement 1
