@@ -1,10 +1,10 @@
-# DEEP CNNs FOR VIOLIN MELODY EXTRACTION FROM POLYPHONIC MUSIC SIGNALS 
-##### David W. Fong
+# Deep CNNs for Violin Melody Extraction from Polyphonic Music Signals 
+#### David W. Fong
 
 *Final Year Project submitted in partial fulfillment of the requirements for the degree
 BEng in Electrical and Electronic Engineering at Imperial College London* 
 
-### Scripts:
+### Modules:
 - main.py - scripts run for project
 - chooseRepresentation.py - functions for plotting spectrograms
 - preprocessing.py - functions for preprocessing of data to be input to CNN
