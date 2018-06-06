@@ -22,8 +22,8 @@ https://github.com/rabitt/ismir2017-deepsalience and used for evaluating the mel
 - keras 2.1.5 
 - librosa 0.6.0
 - matplotlib 2.1.2
-- mir_eval 0.4
 - MIDIUtil 1.2.1
+- mir_eval 0.4
 - numpy 1.14.0
 - pandas 0.22.0
 - pumpp 0.3.2
