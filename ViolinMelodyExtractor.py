@@ -48,6 +48,6 @@ else:
     quit()
     
 #Step 8: Create the .csv and MIDI file for violin melody prediction within path directory
-predicting.createGT(predViolinMelodySmoothed, hopSize_Sec, path, audiofilename, noteMin)    
+predicting.createAnnotation(predViolinMelodySmoothed, hopSize_Sec, path, audiofilename, noteMin)    
 
 

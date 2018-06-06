@@ -6,7 +6,7 @@ from midiutil import MIDIFile
 #-------------------------------------------------------------------------------------------------------
 #FUNCTIONS
 
-def createGT(yPred, frameduration, audiopath, audiofilename, noteMin):
+def createAnnotation(yPred, frameduration, audiopath, audiofilename, noteMin):
     track    = 0
     channel  = 0
     time     = 0    
