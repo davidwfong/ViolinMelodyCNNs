@@ -1,4 +1,4 @@
-#IMPORT ALL CREATED MODULES
+#IMPORT ALL REQUIRED MODULES
 import chooseRepresentation
 import preprocessing
 import training
@@ -239,7 +239,7 @@ initialisation = training.initialiseWithSeed(seed)
 #Step 4: Build Model Architecture
 MonoMECNN_Built = training.buildSingleMECNN(rows=K,columns=T,channels=H)
 
-#Step 5: Set model Type and Number, and save model diagram (optional)
+#Step 5: Set Model Type and Number, and save model diagram (optional)
 modelType = 'MonoMECNN'
 modelNum = 1
 training.saveModelDiagram(MonoMECNN_Built, nameModel=modelType)
@@ -268,7 +268,7 @@ MonoMECNN_Loaded = training.loadpretrainedmodel(path_ME2+'/'+modelType+'_'+str(m
 #---------------------------------------------------------------------------------------------------------------------------------------
 #PLOT CONFUSION MATRICES & GET PREDICTIONS FOR SINGLE CNN
 
-#Step 1: Set model Type, model Number and path
+#Step 1: Set Model Type, Number and path
 modelType = 'PolyMECNN'
 modelNum = 1
 selPath = path_ME1
@@ -331,7 +331,7 @@ preprocessing.saveInputOutputArrays(XMonoHalved, yMonoHalved, 'XTrainMono_MTME'+
 #------------------------------------------------------------------------------------------------------------------------------------
 #BUILD, TRAIN & EVALUATE MELODY EXTRACTION MULTI-TASK CNN (DO ONE-BY-ONE)
 
-#Step 1: Load Training and Test Set Arrays o
+#Step 1: Load Training and Test Set Arrays 
 XTrainPoly_MTMECNN, yTrainPoly_MTMECNN = preprocessing.loadArrays(path_MTME, 'XTrainPoly_MTME'+'.npy',
                                                                   'yTrainPoly_MTME'+'.npy')
 XTrainMono_MTMECNN, yTrainMono_MTMECNN = preprocessing.loadArrays(path_MTME, 'XTrainMono_MTME'+'.npy',
@@ -350,14 +350,15 @@ initialisation = training.initialiseWithSeed(seed)
 #Step 4: Build Model Architecture
 MTMECNN_Built = training.buildMTMECNN(rows=K,columns=T,channels=H)
 
-#Step 5: Set model Type and Number, and save model diagram (optional)
+#Step 5: Set model Type and Number (do one by one, changing i from 0 to 4), and save model diagram (optional)
 modelType = 'MTMECNN'
-modelNum = 1
+modelNum = [1, 2, 3, 4, 5]
+selModelNum = modelNum[i]
 training.saveModelDiagram(MTMECNN_Built, nameModel=modelType)
 
 #Step 6: Set hyperparameters for training configuration
 E, batchSize, optimiser, lossFunction = training.setHyperparamsMTMECNN()
-lossWeights = training.getLossWeights(modelNum) 
+lossWeights = training.getLossWeights(selModelNum) 
 
 #Step 7: Compile Model with loss function and optimiser
 MTMECNN_Compiled = training.compileMultiTaskModel(MTMECNN_Built, lossFunction, lossWeights, optimiser)
@@ -367,18 +368,18 @@ MTMECNN_Trained, MTMECNN_History = training.trainMultiTaskModel(MTMECNN_Compiled
                                                                 XTrainPoly_MTMECNN, yTrainPolyOHE_MTMECNN, 
                                                                 XTrainMono_MTMECNN, yTrainMonoOHE_MTMECNN,
                                                                 E, batchSize,  
-                                                                nameModel=modelType, numModel=modelNum, pathSave=path_MTME,
+                                                                nameModel=modelType, numModel=selModelNum, pathSave=path_MTME,
                                                                 vsplitfactor=0.1)
 
 #Step 9: Plot evolution of loss and accuracy
 training.plotMultiTaskModelHistory(MTMECNN_History, 
-                                   modelType, modelNum,
+                                   modelType, selModelNum,
                                    E)
 
 #Step 10: Evaluate Model on Test Set
-MTMECNN_Loaded = training.loadpretrainedmodel(path_MTME+'/'+modelType+'_'+str(modelNum)+'.h5')
-MTMECNN_Metrics, MTMECNN_Score, MTMECNN_TestLoss, MTME_TestAcc = training.evaluateMultiTaskModel(MTMECNN_Loaded, batchSize, 
-                                                                                                 XTestPoly_MTMECNN, yTestPolyOHE_MTMECNN)
+MTMECNN_Loaded = training.loadpretrainedmodel(path_MTME+'/'+modelType+'_'+str(selModelNum)+'.h5')
+MTMECNN_Metrics, MTMECNN_Score, MTMECNN_TestLoss, MTMECNN_TestAcc = training.evaluateMultiTaskModel(MTMECNN_Loaded, batchSize, 
+                                                                                                    XTestPoly_MTMECNN, yTestPolyOHE_MTMECNN)
 #%%
 #-------------------------------------------------------------------------------------------------------------------------------------------
 #PLOT CONFUSION MATRICES & GET PREDICTIONS FOR MULTI-TASK CNN
@@ -411,7 +412,7 @@ for num in modelNum:
 XTestPoly, yTestPoly = preprocessing.loadArrays(path_ME1, 
                                                 'XTest_ME'+'.npy', 'yTest_ME'+'.npy')
 
-#Step 2: Load pre-trained CNN Model (do one-by-one, changing i)
+#Step 2: Load pre-trained CNN Model (do one-by-one, changing i from 0 to 4)
 MTmodelfilenames = ['MTMECNN_1.h5', 'MTMECNN_2.h5', 'MTMECNN_3.h5', 'MTMECNN_4.h5', 'MTMECNN_5.h5']
 MTmodel = training.loadpretrainedmodel(path_MTME+'/'+MTmodelfilenames[i])
 
