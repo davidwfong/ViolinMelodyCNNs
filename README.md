@@ -5,7 +5,7 @@
 BEng in Electrical and Electronic Engineering at Imperial College London* 
 
 ### Modules:
-- main.py - scripts run for project
+- main.ipynb - Jupyter Notebook used to run code for project
 - chooseRepresentation.py - functions for plotting spectrograms
 - preprocessing.py - functions for preprocessing of data to be input to CNN
 - training.py - functions for training Single and Multi-Task CNNs
@@ -39,7 +39,8 @@ https://github.com/rabitt/ismir2017-deepsalience and used for evaluating the mel
 - MTMECNN_4.h5: Multi-Task CNN 4 for Violin Melody Extraction from Polyphonic Music Signals
 - MTMECNN_5.h5: Multi-Task CNN 5 for Violin Melody Extraction from Polyphonic Music Signals
 
-### Demo Files:
+### Other Files:
 - ViolinSonataDavid.wav: Audio Excerpt from Brahms Sonata No.2 in A Major, Movement 1
 - ViolinRecitalDavid.csv: Estimated Annotation in CSV format 
 - ViolinRecitalDavid.mid: Estimated Annotation in MIDI format
+- outputs.txt: outputs produced from running code
